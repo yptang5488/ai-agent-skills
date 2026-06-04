@@ -1,0 +1,29 @@
+{
+  "skill_name": "development-session-log",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Please create a development session log for this work: I am fixing a PhotoDirector layer thumbnail issue. Current finding: LayerStackView owns display refresh, but thumbnail ROI comes from getLayerThumbnailROI(). We first thought the preset inspector XML controlled the thumbnail bounds, but that was wrong. The confirmed direction is to update ROI handling near the layer thumbnail flow and avoid touching unrelated preset UI. Include open questions about whether cached thumbnails need invalidation.",
+      "expected_output": "A new session log with Current Summary and Timeline Log. It should record the superseded XML assumption, confirmed ownership/direction, known pitfall, and open cache invalidation question without listing trivial code edits.",
+      "files": [],
+      "assertions": [
+        "Includes both Current Summary and Timeline Log sections.",
+        "Records the preset inspector XML idea as superseded rather than as the current direction.",
+        "Captures the cache invalidation question as open or unresolved.",
+        "Avoids listing trivial code edits or diff-like implementation details."
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "Update an existing development session log after this debugging result: The crash was not caused by the AutoIt QAP script. Root cause is that the Python UI callback can fire after the native object has already been released. We rejected adding sleeps in automation because it only hides timing. The fix direction is to guard the callback boundary and keep cleanup ownership in the controller. Keep the timeline append-only and refresh the current summary.",
+      "expected_output": "An updated-style log entry that refreshes Current Summary and appends Root Cause and Rejected entries. It should not rewrite old timeline history or treat unverified guesses as facts.",
+      "files": [],
+      "assertions": [
+        "Refreshes Current Summary with the confirmed root cause and fix direction.",
+        "Appends timeline entries instead of rewriting prior history.",
+        "Marks adding sleeps in automation as a rejected approach.",
+        "Does not blame AutoIt QAP as the root cause."
+      ]
+    }
+  ]
+}
